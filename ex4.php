@@ -111,9 +111,9 @@ $records = [
 	'PeeJay' => ['username'=>'asdf','password'=>'qwerty']
 ];
 
-foreach ($records as $kevin => $chavez) {
-	echo $kevin . ":<br>";
-	foreach ($chavez as $key => $value) {
+foreach ($records as $names => $creds) {
+	echo $names . ":<br>";
+	foreach ($creds as $key => $value) {
 		echo $key . ": " . $value . "<br>";
 	}
 	echo "<br>";
