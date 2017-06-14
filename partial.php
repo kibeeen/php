@@ -82,17 +82,15 @@ foreach ($days as $day_num => $gifts) {
 		$a = 12 - ($counter-1);
 		$b = 12 - $a;
 
-		echo "counter = " . $counter . "<br>";
 		
 
 		for ($i = 0; $i <= $b; $i++) {
 			// echo "b = " . $b . "<br>";
 
-			for ($j = $i; 0 >= $j; $j--) {
 
-			echo "<b>". $giff[$j]. "</b><br>";
+			echo "<b>". $giff[$i]. "</b><br>";
 
-		} 
+
 		// echo "i = " . $i . "<br>";
 
 
