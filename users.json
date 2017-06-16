@@ -1,0 +1,32 @@
+[
+    {
+        "username": "admin",
+        "password": "admin",
+        "fullname": "admin",
+        "email": "admin@echiksenjoy.com"
+    },
+    {
+        "username": "kibeeen",
+        "password": "qwe123",
+        "fullname": "kevin chavez",
+        "email": "kevincchavez@echiksenjoy.com"
+    },
+    {
+        "username": "1",
+        "password": "1",
+        "fullname": "1",
+        "email": "1"
+    },
+    {
+        "username": "1",
+        "password": "1",
+        "fullname": "1",
+        "email": "1"
+    },
+    {
+        "username": "kibeeen",
+        "password": "qwe123",
+        "fullname": "Kevin Chavez",
+        "email": "kevincchavez@gmail.com"
+    }
+]

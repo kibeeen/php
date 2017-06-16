@@ -1,5 +1,63 @@
 <?php 
 
+	session_start();
+
+	// users array
+	// $users = [
+	// 	['username' => 'admin',
+	// 	 'password' => 'admin',
+	// 	 'fullname' => 'admin',
+	// 	 'email' => 'admin@echiksenjoy.com'],
+
+	// 	['username' => 'kibeeen',
+	// 	 'password' => 'qwe123',
+	// 	 'fullname' => 'kevin chavez',
+	// 	 'email' => 'kevincchavez@echiksenjoy.com'],
+	// ];
+
+	//initial run :: create *.json file
+	// $fp = fopen('users.json', 'w');
+	// fwrite($fp, json_encode($users, JSON_PRETTY_PRINT));
+	// fclose($fp);
+
+	//retrieve data form *.json file
+	$string = file_get_contents('users.json');
+	$users = json_decode($string, true);
+
+	// register new user
+	if (isset($_POST['register'])) {
+
+		$new_user = [];
+		$new_user['username'] = $_POST['new_username'];
+		$new_user['password'] = $_POST['new_password'];
+		$new_user['fullname'] = $_POST['fullname'];
+		$new_user['email'] = $_POST['new_email'];
+		$users[] = $new_user;
+
+		$fp = fopen('users.json', 'w');
+		fwrite($fp, json_encode($users, JSON_PRETTY_PRINT));
+		fclose($fp);
+	}
+
+	//log in
+	if(isset($_POST['login'])){
+		foreach ($users as $user) {
+			if ($_POST['username'] == $user['username'] && $_POST['password'] == $user['password']){
+
+				$username = $_POST['username'];
+				$_SESSION['username'] = $username;
+
+				// header('location:hotchix.php');	
+
+			} else {
+				$username = '';
+
+			}
+		}
+	} else {
+		$username = 'Guest';
+		$_SESSION['username'] = $username;
+	}
 	$items = array (
 
 			 array('title' => 'Hotchix 1',
@@ -72,8 +130,28 @@
 		return $output;
 	}
 
+	function check_user($username){
+		if ($username == 'Guest'){
+			echo "<span class='welcome-text'>Hello <b>";
+			echo $_SESSION['username']; 
+			echo "</b>, Welcome to Jollibee Chiks EnJoy! ";
+			echo "<a data-toggle='modal' href='#modal-login' class='logme-in'>[ log-in ] </a>";
+			echo "<a data-toggle='modal' href='#modal-register' class='logme-in'>[ register ] </a></span>";
 
+			
+		} else {
+			echo "<span class='welcome-text'>Hello <b>"; 
+			echo $_SESSION['username']; 
+			echo "</b>, Welcome to Jollibee Chiks EnJoy!";
+			echo "<form class='logmeout' action='logout.php' method='POST'>
+						<button>[ logout ]</button>
+				  </form></span>";
+		}
+	}
 
+	// function logmeout(){
+	// 	session_destroy();
+	// }
 
  ?>
 
@@ -81,82 +159,45 @@
 <html>
 <head>
 
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="hotchix.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<title></title>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 
-		<style>
-
-		* {
-			box-sizing: border-box;
-			padding: 10px;
-		}
-
-		body {
-			background-image: url('items/gradient.jpg');
-			background-repeat: no-repeat;
-			background-size: cover;
+	<div class="container">
+		<div class="top-wrapper">
+			<img class='logo' src='items/logo.png'>
 			
-		}
-
-		img {
-			width: 100%;
-			padding: 0px;
-		}
-
-		.item-wrapper {
-			height: 200px;
-			width: 500px;
-			box-sizing: border-box;
-			margin: 5px;
-			border-radius: 10px;
-			background-color: #f8aa00;
-			padding: 0px;
-
-		}
-
-		.searchbox-wrapper {
-			text-align: center;
-		}
-
-		.searchbox-wrapper > form + input {
-			height: 20px;
-		}
-
-		.img {
-	/*		border: 3px dashed blue;*/
-			width: 40%;
-			padding: 0;
-			margin-right: 5px;
-			overflow: hidden;
-			height: 100%;
-			border-radius: 10px 0 0 10px;
-
-		}
-
-		.desc {
-	/*		border: 3px double gold;*/
-			float: right;
-			width: 60%;
-			padding-top: 0;
-		}
-
-		.title {
-			padding-left: 0;
-			margin-top: 0;
-			font-size: 30px;
-			color: #632913;
-			font-family: Nunito;
-			font-weight: bolder;
-
-		}
 
 
-	</style>
+			<?php check_user($username)?>
+
+
+
+		</div>
+
+		<nav class="navbar navbar-inverse">
+		  <div class="container">
+	<!-- 	    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">WebSiteName</a>
+		    </div> -->
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="#">Home</a></li>
+		      <li><a href="#">Value Meals</a></li>
+		      <li><a href="#">Group Deals</a></li>
+		      <li><a href="#">Live Streaming</a></li>
+		      <li><a href="#">Chiks Delivery!</a></li>
+		    </ul>
+		  </div>
+		</nav>	
+	</div>
+
 </head>
 
 
@@ -165,12 +206,13 @@
 
 		<div class='searchbox-wrapper'>
 
-			<?php 
+			<?php // 
 
 				$category = array_unique($category);
 				echo "<form method='POST' action=''>";
 				echo create_dropdown('category',$category);
 				echo "<input type='submit' name='submit' value='Search'></form>";
+
 
 				function display_chix($item){
 
@@ -193,26 +235,82 @@
 								} else {
 									echo $value . "<br>";
 								}
-
 					} 
-
 					echo "</div>"; // ::closing:: div class = item-wrapper
-
 				} // display_chix ::end
 
 			 ?>
 
-		 </div>
+		</div>
 
 
-	<?php 
-		foreach ($items as $item) {
-			if (!isset($_POST['submit']) || $_POST['category'] == $item['category'] || $_POST['category'] == 'All') {
-					display_chix($item);
-				}} 
-	?>
 
-	  </div><!--  div container -->
+
+		<?php // submit scanner
+			foreach ($items as $item) {
+				if (!isset($_POST['submit']) || $_POST['category'] == $item['category'] || $_POST['category'] == 'All') {
+						display_chix($item);
+					}} 
+		?>
+
+	</div><!--  div container -->
+
+	
+
+
+	<div  id='modal-login' class="modal fade" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	         	 <h4 class="modal-title">Log-in to your account</h4>
+	        </div>
+	        <div class="modal-body">
+
+	         	 <form action="" method="POST">
+					Username:<br>
+						<input type="text" name='username'><br>
+					Password:<br>
+						<input type="password" name='password'><br><br>		
+						<input type="submit" name="login" value="Log-in"><br><br>
+				</form>
+
+	        </div>
+	      </div>
+	      </div>
+	      </div>
+
+
+	<div id='modal-register' class="modal fade" role="dialog">
+	    <div class="modal-dialog">
+
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	         	 <h4 class="modal-title">Register</h4>
+	        </div>
+	        <div class="modal-body">
+
+	         	 <form action="" method="POST">
+		         	Full Name:<br>
+						<input type="text" name='fullname'><br>
+					Email Address:<br>
+						<input type="text" name='new_email'><br>
+					Username:<br>
+						<input type="text" name='new_username'><br>
+					Password:<br>
+						<input type="password" name='new_password'><br><br>		
+						<input type="submit" name="register" value="Register"><br><br>
+				</form>
+
+	        </div>
+	      </div>
+      
+	    </div>
+  	</div>
 
 </body>
 </html>

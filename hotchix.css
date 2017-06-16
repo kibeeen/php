@@ -1,0 +1,184 @@
+@font-face {
+  font-family: Jellee;
+  src: url(items/Jellee-Roman.otf);
+}
+
+@media (min-width: 1200px) {
+
+ .container {
+    width: 960px;
+
+}
+}
+
+body {
+	background-image: url('items/gradient.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: 50% 60%;
+
+}
+
+body + .container {
+	box-sizing: border-box;
+}
+
+img {
+	width: 100%;
+	padding: 0px;
+}
+
+.modal-content {
+    width: 300px;
+    margin: auto;
+}
+
+.modal-header {
+
+}
+
+
+.top-wrapper {
+	position: relative;
+}
+
+.item-wrapper {
+	height: 200px;
+	box-sizing: border-box;
+	border-radius: 15px;
+	background-color: #f8aa00;
+	padding: 5px;
+	background-clip: content-box;
+}
+
+.searchbox-wrapper {
+	text-align: center;
+}
+
+.searchbox-wrapper > form + input {
+	height: 20px;
+}
+
+.img {
+	width: 40%;
+	padding: 0;
+	margin-right: 5px;
+	overflow: hidden;
+	height: 100%;
+	border-radius: 10px 0 0 10px;
+}
+
+.desc {
+	box-sizing: border-box;
+	padding: 10px;
+	float: right;
+	width: 60%;
+	padding-top: 0;
+
+}
+
+.logo {
+	height: 110px;
+	width: 160px;
+	padding-top: 10px;
+	padding-left: 25px;
+	margin-bottom: 5px;
+/*	margin-top: 100px;*/
+}
+
+.title {
+	box-sizing: border-box;
+	padding: 10px;
+	padding-left: 0;
+	margin-top: 0;
+	font-size: 30px;
+	color: #632913;
+	font-family: Nunito;
+	font-weight: bolder;
+
+}
+
+.welcome-text {
+	position: absolute;
+	color: white;
+	font-size: 12px;
+	font-weight: 700;
+	font-family: Nunito;
+	right: 1%;
+	top: 35%;
+}
+
+.logme-in {
+	color: white;
+}
+
+.logme-in:hover,
+.logme-in:focus {
+	color: #FBC908;
+	text-decoration: none;
+}
+
+/* -- navbar -- */
+
+.navbar {
+	font-family: Nunito;
+	font-weight: 800;
+	font-size: 12.3px;
+	letter-spacing: .25px;
+	min-height: 22px !important;
+	box-shadow: -2px 3px 7px rgba(66, 0, 0, 0.38);
+}
+
+.container > ul {
+	margin-left: 5%;
+}
+
+
+
+.navbar-inverse {
+    background-color: #751100;
+    border: none;
+    border-radius: 10px;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+	color: #fff;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .active > a:hover, 
+.navbar-inverse .navbar-nav >li > a:hover {
+	color: #FBC908;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+    padding: 7px 13px;
+}
+
+
+/* -- end of navbar -- */
+
+
+.logmeout {
+	display: inline;
+}
+
+.logmeout > button {
+	background-color: transparent;
+	border: none;
+	padding: 2px;
+	text-decoration: underline;
+}
+
+.logmeout > button:hover {
+	color: #FBC908;
+}
+
+b {
+	font-size: 13px;
+	color: gold;
+}
+
+

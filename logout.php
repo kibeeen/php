@@ -7,7 +7,9 @@ session_start();
 
 session_destroy();
 
-echo $_SESSION["user"] . " logged out successfully. balik ka po ah?";
+
+header('location:hotchix.php');
+
 
 
  ?>
