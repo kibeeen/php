@@ -79,11 +79,10 @@ img {
 
 .logo {
 	height: 110px;
-	width: 160px;
+	width: 200px;
 	padding-top: 10px;
 	padding-left: 25px;
 	margin-bottom: 5px;
-/*	margin-top: 100px;*/
 }
 
 .title {
@@ -141,10 +140,12 @@ img {
     border-radius: 10px;
 }
 
-.navbar-inverse .navbar-nav > .active > a {
+.navbar-inverse .navbar-nav > .active > a{
 	color: #fff;
     background-color: transparent;
 }
+
+
 
 .navbar-inverse .navbar-nav > .active > a:hover, 
 .navbar-inverse .navbar-nav >li > a:hover {
@@ -155,6 +156,11 @@ img {
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
     padding: 7px 13px;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+    color: #fff;
+    background-color: transparent;
 }
 
 

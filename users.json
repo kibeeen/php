@@ -6,27 +6,27 @@
         "email": "admin@echiksenjoy.com"
     },
     {
+        "username": "1",
+        "password": "2",
+        "fullname": "1",
+        "email": "1"
+    },
+    {
         "username": "kibeeen",
         "password": "qwe123",
         "fullname": "kevin chavez",
         "email": "kevincchavez@echiksenjoy.com"
     },
     {
-        "username": "1",
-        "password": "1",
-        "fullname": "1",
-        "email": "1"
-    },
-    {
-        "username": "1",
-        "password": "1",
-        "fullname": "1",
-        "email": "1"
-    },
-    {
-        "username": "kibeeen",
+        "username": "twirlwhirl",
         "password": "qwe123",
-        "fullname": "Kevin Chavez",
-        "email": "kevincchavez@gmail.com"
+        "fullname": "kiben tsabes",
+        "email": "1@email.com"
+    },
+    {
+        "username": "pakbtch69",
+        "password": "spitfire",
+        "fullname": "junathan corps",
+        "email": "@yahoo.com"
     }
 ]
